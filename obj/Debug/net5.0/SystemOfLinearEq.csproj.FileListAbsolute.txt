@@ -1,0 +1,16 @@
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\bin\Debug\net5.0\SystemOfLinearEq.exe
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\bin\Debug\net5.0\SystemOfLinearEq.deps.json
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\bin\Debug\net5.0\SystemOfLinearEq.runtimeconfig.json
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\bin\Debug\net5.0\SystemOfLinearEq.runtimeconfig.dev.json
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\bin\Debug\net5.0\SystemOfLinearEq.dll
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\bin\Debug\net5.0\ref\SystemOfLinearEq.dll
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\bin\Debug\net5.0\SystemOfLinearEq.pdb
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\SystemOfLinearEq.csproj.AssemblyReference.cache
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\SystemOfLinearEq.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\SystemOfLinearEq.AssemblyInfoInputs.cache
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\SystemOfLinearEq.AssemblyInfo.cs
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\SystemOfLinearEq.csproj.CoreCompileInputs.cache
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\SystemOfLinearEq.dll
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\ref\SystemOfLinearEq.dll
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\SystemOfLinearEq.pdb
+C:\Users\panin\RiderProjects\SystemOfLinearEq\SystemOfLinearEq\obj\Debug\net5.0\SystemOfLinearEq.genruntimeconfig.cache
