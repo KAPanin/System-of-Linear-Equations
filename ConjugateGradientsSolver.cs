@@ -2,11 +2,71 @@
 {
     using System;
     using System.Linq;
+    using System.Collections.Generic;
     
     public static class ConjugateGradientsSolver
     {
         private const double Eps = 1e-5;
 
+        public static (double[], double[], double[], double[]) TridiagonalRun(double[] a, double[] b, double[] c, double[] f,  int n)
+        {
+            var m = 0;
+            var mArray = new List<double>();
+            var normArray = new List<double>();
+            double[] finalResidual;
+            
+            var norm = 1d;
+            var result = new double[n];
+            result[0] = 0;
+            result[n - 1] = 1;
+            
+            var rPrev = MathHelper.GetResidualFromTridiagonal(result, a, b, c, f, n);
+            var p = (double[])rPrev.Clone();
+
+            while (true)
+            {
+                var r = MathHelper.GetResidualFromTridiagonal(result, a, b, c, f, n);
+                
+                var r2 = ScalarMultiplication(r, r);
+                var alpha = r2 / ScalarMultiplication(rPrev, rPrev);
+
+                p = r.SubtractBy(p.MultiplyBy(-alpha));
+                var lambda = r2 / ScalarMultiplication(p, TridiagonalMatrixMultiplyByVector(a, b, c, p));
+                result = result.SubtractBy(p.MultiplyBy(lambda));
+
+                norm = Math.Sqrt(r2);
+                m++;
+                mArray.Add(m);
+                normArray.Add(norm);
+                
+                rPrev = (double[])r.Clone();
+                
+                if (norm > Eps)
+                    continue;
+			    
+                finalResidual = rPrev;
+                break;
+            }
+
+            return (result, finalResidual, mArray.ToArray(), normArray.ToArray());
+        }
+
+        private static double[] TridiagonalMatrixMultiplyByVector(double[] a, double[] b, double[] c, double[] x)
+        {
+            var n = x.Length;
+            var result = new double[n];
+            result[0] = c[0] * x[0] + b[0] * x[1];
+            
+            for (var i = 1; i < n - 1; i++)
+            {
+                result[i] = a[i] * x[i - 1] + c[i] * x[i] + b[i] * x[i + 1];
+            }
+            
+            result[n - 1] = a[n - 1] * x[n - 2] + c[n - 1] * x[n - 1];
+
+            return result;
+        }
+        
         /// <summary>
         /// Solve SLAE
         /// </summary>

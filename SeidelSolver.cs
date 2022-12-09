@@ -2,11 +2,47 @@
 {
 	using System;
 	using System.Linq;
+	using System.Collections.Generic;
 	
     public static class SeidelSolver
     {
 	    private const double Eps = 1e-5;
-	    
+
+	    public static (double[], double[], double[], double[]) TridiagonalRun(double[] a, double[] b, double[] c, double[] f,  int n)
+	    {
+		    var m = 0;
+		    var mArray = new List<double>();
+		    var normArray = new List<double>();
+		    double[] finalResidual;
+		    
+		    var norm = 1d;
+		    var result = new double[n];
+		    result[0] = 0;
+		    result[n - 1] = 1;
+
+		    while (true)
+		    {
+			    for (var i = 1; i < n - 1; i++)
+			    {
+				    result[i] = (f[i] - a[i] * result[i - 1] - b[i] * result[i + 1]) / c[i];
+			    }
+
+			    m++;
+			    var residual = MathHelper.GetResidualFromTridiagonal(result, a, b, c, f, n);
+			    norm = MathHelper.GetNorm(residual);
+			    mArray.Add(m);
+			    normArray.Add(norm);
+
+			    if (norm > Eps)
+				    continue;
+			    
+			    finalResidual = residual;
+			    break;
+		    }
+
+		    return (result, finalResidual, mArray.ToArray(), normArray.ToArray());
+	    }
+
 	    /// <summary>
 	    /// Solve SLAE 
 	    /// </summary>
