@@ -1,6 +1,7 @@
 ﻿namespace SystemOfLinearEq
 {
     using System;
+    using System.Diagnostics;
     
     public static class ProblemsSolver
     {
@@ -37,7 +38,7 @@
                 return Math.Round(x - Math.Sin(16 * Math.PI * x) / 16, 9);
             }
 
-            const int n = 50;
+            const int n = 500;
             const double h = 1d / (n-1);
             const double k = 1d;
             
@@ -63,11 +64,22 @@
                 c[i] = - 2 *k / Math.Pow(h, 2);
             }
 
+            var watch = Stopwatch.StartNew();
             var thomasResult = ThomasSolver.Run(a, b, c, f, n);
+            watch.Stop(); 
+            Console.WriteLine($"Thomas time {watch.Elapsed.TotalMilliseconds} ms.");
+            
+            watch = Stopwatch.StartNew();
             var (seidelResult, seidelResidual, seidelIters, seidelNorms) =
                 SeidelSolver.TridiagonalRun(a, b, c, f, n);
+            watch.Stop(); 
+            Console.WriteLine($"Seidel time {watch.Elapsed.TotalMilliseconds} ms.");
+            
+            watch = Stopwatch.StartNew();
             var (conjugateGradientsResult, conjugateGradientsResidual, conjugateGradientsIters, conjugateGradientsNorms) = 
                 ConjugateGradientsSolver.TridiagonalRun(a, b, c, f, n);
+            watch.Stop(); 
+            Console.WriteLine($"Conjugate Gradients time {watch.Elapsed.TotalMilliseconds} ms.");
             
             FileHelper.WriteFile("data.txt", x, thomasResult, seidelResult, conjugateGradientsResult, exactSolution,
                 seidelResidual, conjugateGradientsResidual);

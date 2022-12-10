@@ -14,8 +14,7 @@
 		    var mArray = new List<double>();
 		    var normArray = new List<double>();
 		    double[] finalResidual;
-		    
-		    var norm = 1d;
+
 		    var result = new double[n];
 		    result[0] = 0;
 		    result[n - 1] = 1;
@@ -29,7 +28,7 @@
 
 			    m++;
 			    var residual = MathHelper.GetResidualFromTridiagonal(result, a, b, c, f, n);
-			    norm = MathHelper.GetNorm(residual);
+			    var norm = MathHelper.GetNorm(residual);
 			    mArray.Add(m);
 			    normArray.Add(norm);
 
